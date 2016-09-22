@@ -1,9 +1,9 @@
 # Survey
 
-[](Splash page and survey by email)
+Splash page and survey by email
 
 
-## Getting Started
+## [](Getting Started)
 
 ### Prerequisities
 
