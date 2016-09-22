@@ -1,4 +1,4 @@
-package com.ebusato.geofusion.survey.persistence.config;
+package com.ebusato.survey.persistence.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -14,10 +14,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import com.ebusato.geofusion.survey.persistence.entity.Lead;
+import com.ebusato.survey.persistence.entity.Lead;
 
 @Configuration
-@EnableJpaRepositories(basePackageClasses=com.ebusato.geofusion.survey.persistence.repository._PackageMarker.class)
+@EnableJpaRepositories(basePackageClasses=com.ebusato.survey.persistence.repository._PackageMarker.class)
 @PropertySource("classpath:datasource.properties")
 public class PersistenceConfig {
 	

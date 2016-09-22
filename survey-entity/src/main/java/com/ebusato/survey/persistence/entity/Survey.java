@@ -1,4 +1,4 @@
-package com.ebusato.geofusion.survey.persistence.entity;
+package com.ebusato.survey.persistence.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
