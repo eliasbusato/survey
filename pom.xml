@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ebusato</groupId>
+	<artifactId>survey</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>survey project</name>
+	<description>parent pom for survey project</description>
+	
+	<modules>
+		<module>survey-entity</module>
+		<module>survey-repository</module>
+		<module>survey-rest</module>
+	</modules>
+	
+	<properties>
+		<!-- environment -->
+		<java.version>1.8</java.version>
+		<j2ee.version>7.0</j2ee.version>
+		<postgresql.driver.version>9.4.1211</postgresql.driver.version>
+		
+		<!-- vendor -->
+		<hibernate.version>5.2.2.Final</hibernate.version>
+		<spring.version>4.3.3.RELEASE</spring.version>
+		<spring.data.jpa.version>1.10.3.RELEASE</spring.data.jpa.version>
+		
+		<!-- plugins -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+  		<maven.compiler.target>${java.version}</maven.compiler.target>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>		
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${j2ee.version}</version>
+				<scope>provided</scope>
+			</dependency>			
+			<dependency>
+				<groupId>org.postgresql</groupId>
+    			<artifactId>postgresql</artifactId>
+    			<version>${postgresql.driver.version}</version>
+			</dependency>
+			<dependency>
+    			<groupId>org.hibernate</groupId>
+    			<artifactId>hibernate-entitymanager</artifactId>
+    			<version>${hibernate.version}</version>
+			</dependency>			
+			<dependency>
+    			<groupId>org.springframework</groupId>
+    			<artifactId>spring-context</artifactId>
+    			<version>${spring.version}</version>
+    		</dependency>
+			<dependency>
+    			<groupId>org.springframework.data</groupId>
+    			<artifactId>spring-data-jpa</artifactId>
+    			<version>${spring.data.jpa.version}</version>
+			</dependency>
+				
+			<!-- modules -->
+			<dependency>
+				<groupId>com.ebusato</groupId>
+				<artifactId>survey-entity</artifactId>
+				<version>${parent.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ebusato</groupId>
+				<artifactId>survey-repository</artifactId>
+				<version>${parent.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+</project>
