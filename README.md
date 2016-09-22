@@ -5,7 +5,7 @@ Splash page and survey by email
 
 ## [](Getting Started)
 
-### Prerequisities
+### [](Prerequisities)
 
 ### Installing
 
@@ -17,9 +17,9 @@ Splash page and survey by email
 
 ## Built With
 
-* Maven
+[](* Maven
 * Spring
-* Hibernate
+* Hibernate)
 
 ## Contributing
 
