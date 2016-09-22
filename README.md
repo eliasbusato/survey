@@ -7,26 +7,26 @@ Splash page and survey by email
 
 ### [](Prerequisities)
 
-### Installing
+### [](Installing)
 
-## Running the tests
+## [](Running the tests)
 
-### And coding style tests
+### [](And coding style tests)
 
-## Deployment
+## [](Deployment)
 
 ## Built With
 
-[](* Maven
+* Maven
 * Spring
-* Hibernate)
+* Hibernate
 
-## Contributing
+## [](Contributing)
 
-## Versioning
+## [](Versioning)
 
-## Authors
+## [](Authors)
 
-## License
+## [](License)
 
-## Acknowledgments
+## [](Acknowledgments)
