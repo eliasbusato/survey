@@ -13,6 +13,8 @@
 		<module>survey-entity</module>
 		<module>survey-repository</module>
 		<module>survey-rest</module>
+		<module>survey-resource</module>
+		<module>survey-web</module>
 	</modules>
 
 	<properties>
@@ -23,14 +25,16 @@
 	    <failOnMissingWebXml>false</failOnMissingWebXml>
 
 		<!-- vendor -->
-		<hibernate.version>5.2.2.Final</hibernate.version>
-		<spring.version>4.3.3.RELEASE</spring.version>
+		<hibernate.version>4.1.9.Final</hibernate.version>
+		<spring.version>4.2.8.RELEASE</spring.version>
 		<spring.data.jpa.version>1.10.3.RELEASE</spring.data.jpa.version>
+		<spring.hateoas.version>0.21.0.RELEASE</spring.hateoas.version>
+		<guava.version>19.0</guava.version>
 
 		<!-- plugins -->
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.war.version>3.0.0</maven.war.version>
+		<maven.war.version>2.6</maven.war.version>
 		
 	</properties>
 
@@ -67,6 +71,16 @@
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${spring.data.jpa.version}</version>
 			</dependency>
+			<dependency>
+    			<groupId>org.springframework.hateoas</groupId>
+    			<artifactId>spring-hateoas</artifactId>
+    			<version>${spring.hateoas.version}</version>
+			</dependency>			
+			<dependency>
+    			<groupId>com.google.guava</groupId>
+    			<artifactId>guava</artifactId>
+    			<version>${guava.version}</version>
+			</dependency>		
 
 			<!-- modules -->
 			<dependency>
@@ -77,6 +91,11 @@
 			<dependency>
 				<groupId>com.ebusato</groupId>
 				<artifactId>survey-repository</artifactId>
+				<version>${parent.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ebusato</groupId>
+				<artifactId>survey-resource</artifactId>
 				<version>${parent.version}</version>
 			</dependency>
 		</dependencies>
