@@ -1,8 +1,17 @@
 package com.ebusato.survey.persistence.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 /**
@@ -27,6 +36,9 @@ public class Lead implements Serializable {
 	//bi-directional many-to-one association to LeadSurvey
 	@OneToMany(mappedBy="lead")
 	private List<LeadSurvey> leadSurveys;
+	
+	@Column(nullable=false)
+	private boolean engaged;
 
 	public Lead() {
 	}
@@ -45,6 +57,14 @@ public class Lead implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean isEngaged() {
+		return this.engaged;
+	}
+	
+	public void setEngaged(boolean engaged) {
+		this.engaged = engaged;
 	}
 
 	public List<LeadSurvey> getLeadSurveys() {

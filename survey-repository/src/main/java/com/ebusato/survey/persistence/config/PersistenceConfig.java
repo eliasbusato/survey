@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -28,33 +27,25 @@ import com.ebusato.survey.persistence.entity.Lead;
 @PropertySource("classpath:datasource.properties")
 public class PersistenceConfig {
 	
-	@Value("${datasource.driver.classname}")
-	private String driverClassName;
-	
-	@Value("${datasource.url}")
-	private String datasourceUrl;
-
-	@Value("${datasource.username}")
-	private String datasourceUsername;
-	
-	@Value("${datasource.password}")
-	private String datasourcePassword;
-	
-	
 	@Bean
-    public DataSource dataSource() {
+    public DataSource dataSource(
+    	@Value("${datasource.driver.classname}") String driverClassName,
+    		@Value("${datasource.url}") String datasourceUrl,
+    			@Value("${datasource.username}") String datasourceUsername,
+    				@Value("${datasource.password}") String datasourcePassword) {
+		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(this.driverClassName);
-		dataSource.setUrl(this.datasourceUrl);
-		dataSource.setUsername(this.datasourceUsername);
-		dataSource.setPassword(this.datasourcePassword);
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(datasourceUrl);
+		dataSource.setUsername(datasourceUsername);
+		dataSource.setPassword(datasourcePassword);
 	    return dataSource;
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
+    public JpaVendorAdapter jpaVendorAdapter(@Value("${jpa.showsql}") boolean showSql) {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(true);
+        hibernateJpaVendorAdapter.setShowSql(showSql);
         hibernateJpaVendorAdapter.setGenerateDdl(false);
         hibernateJpaVendorAdapter.setDatabase(Database.POSTGRESQL);
         return hibernateJpaVendorAdapter;
@@ -76,13 +67,4 @@ public class PersistenceConfig {
 	public PlatformTransactionManager transactionManager(EntityManagerFactory em) {
 		return new JpaTransactionManager(em);
 	}
-	
-	/*
-     * PropertySourcesPlaceHolderConfigurer Bean only required for @Value("{}") annotations.
-     * Remove this bean if you are not using @Value annotations for injecting properties.
-     */
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 }
