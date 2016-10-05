@@ -100,7 +100,7 @@ public class BatchConfig extends DefaultBatchConfigurer {
 		javaMailProperties.setProperty("mail.smtp.quitwait", "false");
 		javaMailProperties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		javaMailProperties.setProperty("mail.smtp.socketFactory.fallback", "false");
-		javaMailProperties.setProperty("mail.debug", "true");		
+		javaMailProperties.setProperty("mail.debug", "false");		
 		javaMailSender.setJavaMailProperties(javaMailProperties);
 		
 		return javaMailSender;

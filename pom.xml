@@ -194,10 +194,7 @@
 				<plugin>
 					<groupId>com.heroku.sdk</groupId>
 					<artifactId>heroku-maven-plugin</artifactId>
-					<version>${heroku.maven.plugin.version}</version>
-					<configuration>
-						<appName>${heroku.app.name}</appName>						
-					</configuration>
+					<version>${heroku.maven.plugin.version}</version>					
 				</plugin>
 			</plugins>
 		</pluginManagement>
