@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.ebusato</groupId>
 		<artifactId>survey</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
 	<packaging>war</packaging>
@@ -52,12 +52,24 @@
 	<build>
 		<plugins>
 			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 			<plugin>
 			    <groupId>org.eclipse.jetty</groupId>
 			    <artifactId>jetty-maven-plugin</artifactId>
 			    <version>9.3.12.v20160915</version>			
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<configuration>
+					<processTypes>
+						<worker>java $JAVA_OPTS -cp target/classes:target/dependency/* ${main.class}</worker>
+					</processTypes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -10,7 +10,8 @@
 	<logger name="org.springframework.context.annotation.ConfigurationClassEnhancer" 	level="ERROR" />
 	<logger name="org.springframework"													level="WARN"  />
 	<logger name="org.hibernate" 														level="WARN"  />
-	<logger name="org.apache" 															level="WARN"  />	
+	<logger name="org.apache" 															level="WARN"  />
+	<logger name="com.sun.mail"															level="WARN"  />		
 	<logger name="com.mysema" 															level="WARN"  />
 	<logger name="com.ebusato"		 													level="INFO"  />	
 

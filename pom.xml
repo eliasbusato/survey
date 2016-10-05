@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ebusato</groupId>
 	<artifactId>survey</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>survey project</name>
 	<description>parent pom for survey project</description>
@@ -24,6 +24,7 @@
 		<javax.mail.version>1.4.7</javax.mail.version>
 		<postgresql.driver.version>9.4.1211</postgresql.driver.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<heroku.app.name>${project.artifactId}</heroku.app.name>
 
 		<!-- vendor -->
 		<hibernate.version>4.1.9.Final</hibernate.version>
@@ -40,6 +41,8 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.war.version>2.6</maven.war.version>
+		<maven.dependency.version>2.4</maven.dependency.version>
+		<heroku.maven.plugin.version>1.1.1</heroku.maven.plugin.version>
 
 	</properties>
 
@@ -50,12 +53,12 @@
 				<artifactId>javaee-api</artifactId>
 				<version>${j2ee.version}</version>
 				<scope>provided</scope>
-			</dependency>			
+			</dependency>
 			<dependency>
-    			<groupId>javax.mail</groupId>
-    			<artifactId>mail</artifactId>
-    			<version>${javax.mail.version}</version>
-			</dependency>			
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${javax.mail.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.postgresql</groupId>
 				<artifactId>postgresql</artifactId>
@@ -78,10 +81,10 @@
 				</exclusions>
 			</dependency>
 			<dependency>
-            	<groupId>org.springframework</groupId>
-            	<artifactId>spring-context-support</artifactId>
-            	<version>${spring.version}</version>
-        	</dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
@@ -125,11 +128,11 @@
 				<artifactId>logback-core</artifactId>
 				<version>${logback.version}</version>
 			</dependency>
-			
+
 			<dependency>
-  				<groupId>org.freemarker</groupId>
-  				<artifactId>freemarker</artifactId>
-  				<version>${freemarker.version}</version>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
 			</dependency>
 
 			<!-- modules -->
@@ -150,7 +153,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<!-- default dependencies for all modules -->
 	<dependencies>
 		<dependency>
@@ -173,6 +176,28 @@
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>
 					<version>${maven.war.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven.dependency.version}</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>com.heroku.sdk</groupId>
+					<artifactId>heroku-maven-plugin</artifactId>
+					<version>${heroku.maven.plugin.version}</version>
+					<configuration>
+						<appName>${heroku.app.name}</appName>						
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

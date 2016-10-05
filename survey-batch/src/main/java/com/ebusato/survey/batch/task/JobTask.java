@@ -26,11 +26,11 @@ public class JobTask {
 	public void runJob() {
 		try {
 			long startTime = System.currentTimeMillis();
-			LOGGER.info("Launching Lead Job.");			
+			LOGGER.info("launching lead job.");			
 			jobLauncher.run(job, new JobParametersBuilder().addDate("startDate", new Date()).toJobParameters());
-			LOGGER.info("Job finished! took [{}] ms!", System.currentTimeMillis() - startTime);
+			LOGGER.info("job finished! took [{}] ms!", System.currentTimeMillis() - startTime);
 		} catch (Exception e) {
-			LOGGER.error("Error running Lead Job", e);			
+			LOGGER.error("error running lead job", e);			
 		}		
 	}
 }

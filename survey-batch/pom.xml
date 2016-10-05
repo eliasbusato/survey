@@ -6,10 +6,14 @@
 	<parent>
 		<groupId>com.ebusato</groupId>
 		<artifactId>survey</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>survey-batch</artifactId>
+	
+	<properties>
+		<main.class>com/ebusato/survey/batch/Main</main.class>
+	</properties>
 	
 	<dependencies>
 		<dependency>
@@ -37,4 +41,21 @@
     		<artifactId>spring-batch-core</artifactId>
     	</dependency>    	
 	</dependencies>
+	
+	<build>
+		<plugins>			
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<configuration>
+					<processTypes>
+						<worker>java $JAVA_OPTS -cp target/classes:target/dependency/* ${main.class}</worker>
+					</processTypes>
+				</configuration>
+			</plugin>	     	
+		</plugins>
+	</build>
 </project>
