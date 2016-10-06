@@ -3,6 +3,7 @@ package com.ebusato.survey.persistence.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Lead implements Serializable {
 	private String email;
 
 	//bi-directional many-to-one association to LeadSurvey
-	@OneToMany(mappedBy="lead")
+	@OneToMany(mappedBy="lead", cascade={ CascadeType.PERSIST, CascadeType.MERGE})
 	private List<LeadSurvey> leadSurveys;
 	
 	@Column(nullable=false)

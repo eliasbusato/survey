@@ -36,6 +36,7 @@
 		<freemarker.version>2.3.23</freemarker.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<logback.version>1.1.7</logback.version>
+		<jackson.version>2.7.5</jackson.version>
 
 		<!-- plugins -->
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -58,7 +59,7 @@
 				<groupId>javax.mail</groupId>
 				<artifactId>mail</artifactId>
 				<version>${javax.mail.version}</version>
-			</dependency>
+			</dependency>			
 			<dependency>
 				<groupId>org.postgresql</groupId>
 				<artifactId>postgresql</artifactId>
@@ -110,31 +111,37 @@
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
 				<version>${logback.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
 				<version>${logback.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
 				<version>${freemarker.version}</version>
-			</dependency>
-
+			</dependency>			
+			<dependency>
+            	<groupId>com.fasterxml.jackson.core</groupId>
+            	<artifactId>jackson-databind</artifactId>
+            	<version>${jackson.version}</version>
+        	</dependency>
+        	<dependency>
+            	<groupId>com.fasterxml.jackson.dataformat</groupId>
+            	<artifactId>jackson-dataformat-xml</artifactId>
+            	<version>${jackson.version}</version>
+        	</dependency>
+        	
 			<!-- modules -->
 			<dependency>
 				<groupId>com.ebusato</groupId>
@@ -177,6 +184,7 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>${maven.war.version}</version>
 				</plugin>
+				<!-- 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -191,6 +199,7 @@
 						</execution>
 					</executions>
 				</plugin>
+				-->
 				<plugin>
 					<groupId>com.heroku.sdk</groupId>
 					<artifactId>heroku-maven-plugin</artifactId>

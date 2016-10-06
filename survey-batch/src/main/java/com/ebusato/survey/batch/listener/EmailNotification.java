@@ -2,6 +2,7 @@ package com.ebusato.survey.batch.listener;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import com.ebusato.survey.persistence.entity.Lead;
+import com.google.common.io.BaseEncoding;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -64,7 +66,8 @@ public class EmailNotification implements ItemProcessListener<Lead, Lead> {
 			helper.setSubject(this.mailSubject);			
 			helper.setTo(item.getEmail());
 			
-			String surveyLink = String.format(surveyURL, item.getEmail());
+			String encodedEmail = BaseEncoding.base16().lowerCase().encode(item.getEmail().getBytes(StandardCharsets.UTF_8));			
+			String surveyLink = String.format(surveyURL, encodedEmail);
 			
 			Template emailTemplate = this.freemarkerConfig.getTemplate("emailtemplate.html");
 			Map<String, Object> model = new HashMap<>();
