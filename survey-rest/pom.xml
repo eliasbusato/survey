@@ -51,25 +51,20 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-			</plugin>
-			<plugin>
-			    <groupId>org.eclipse.jetty</groupId>
-			    <artifactId>jetty-maven-plugin</artifactId>
-			    <version>9.3.12.v20160915</version>			
 			</plugin>
 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 				<configuration>
-					<processTypes>
-						<worker>java $JAVA_OPTS -cp target/classes:target/dependency/* ${main.class}</worker>
-					</processTypes>
+					<appName>${heroku.app.name}</appName>
 				</configuration>
-			</plugin>
+			</plugin>	     	
+			<plugin>
+			    <groupId>org.eclipse.jetty</groupId>
+			    <artifactId>jetty-maven-plugin</artifactId>
+			    <version>9.3.12.v20160915</version>			
+			</plugin>			
 		</plugins>
 	</build>
 </project>
